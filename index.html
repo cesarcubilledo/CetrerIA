@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CetrerIA</title>
+  <meta name="description" content="CetrerIA: divulgación, orientación y formación básica sobre cetrería." />
+  <style>
+    :root{
+      --bg:#0f172a;
+      --card:#111827;
+      --soft:#1f2937;
+      --text:#e5e7eb;
+      --muted:#cbd5e1;
+      --line:#334155;
+      --accent:#d4a373;
+      --accent-2:#84a98c;
+      --white:#ffffff;
+      --max:1120px;
+      --radius:18px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      background:linear-gradient(180deg,#0b1220,#111827 30%,#0f172a);
+      color:var(--text);
+      line-height:1.6;
+    }
+
+    a{text-decoration:none;color:inherit}
+
+    .container{
+      width:min(92%,var(--max));
+      margin:0 auto;
+    }
+
+    .nav{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:18px 0;
+    }
+
+    .brand{
+      font-size:1.35rem;
+      font-weight:700;
+      letter-spacing:.4px;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+
+    .nav-links a{
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:14px 22px;
+      border-radius:999px;
+      font-weight:700;
+      border:1px solid transparent;
+      transition:.2s;
+      cursor:pointer;
+    }
+
+    .btn-primary{
+      background:var(--accent);
+      color:#1a1a1a;
+    }
+
+    .btn-secondary{
+      border-color:var(--line);
+      color:var(--white);
+      background:transparent;
+    }
+
+    .btn:hover{
+      transform:translateY(-1px);
+    }
+
+    .hero{
+      padding:48px 0 30px;
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:28px;
+      align-items:center;
+    }
+
+    .hero-card,.card{
+      background:rgba(17,24,39,.78);
+      border:1px solid rgba(148,163,184,.18);
+      border-radius:var(--radius);
+      box-shadow:0 12px 40px rgba(0,0,0,.22);
+    }
+
+    .hero-copy{padding:34px}
+    .hero-side{padding:24px}
+
+    .eyebrow{
+      display:inline-block;
+      background:rgba(132,169,140,.12);
+      color:var(--accent-2);
+      border:1px solid rgba(132,169,140,.25);
+      padding:6px 12px;
+      border-radius:999px;
+      font-size:.82rem;
+      margin-bottom:16px
+    }
+
+    h1{
+      font-size:clamp(2rem,5vw,3.6rem);
+      line-height:1.06;
+      margin:0 0 16px;
+    }
+
+    .lead{
+      font-size:1.08rem;
+      color:var(--muted);
+      margin-bottom:24px;
+    }
+
+    .cta-row{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    .mini-list{
+      margin:0;
+      padding-left:18px;
+      color:var(--muted);
+    }
+
+    section{padding:22px 0}
+
+    .section-title{
+      font-size:1.8rem;
+      margin:0 0 10px;
+    }
+
+    .section-text{
+      color:var(--muted);
+      margin:0 0 18px;
+    }
+
+    .grid-3,.grid-2{
+      display:grid;
+      gap:18px;
+    }
+
+    .grid-3{grid-template-columns:repeat(3,1fr)}
+    .grid-2{grid-template-columns:repeat(2,1fr)}
+
+    .card{padding:24px}
+
+    .card h3{margin-top:0}
+
+    .muted{color:var(--muted)}
+
+    .media-frame, .chat-frame{
+      width:100%;
+      border:0;
+      border-radius:14px;
+      background:#0b1220;
+      min-height:320px;
+    }
+
+    .audio-wrap audio{
+      width:100%;
+    }
+
+    form{
+      display:grid;
+      gap:12px;
+    }
+
+    input, select{
+      width:100%;
+      padding:14px 14px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:#0b1220;
+      color:var(--text);
+      font-size:1rem;
+    }
+
+    label{
+      font-weight:700;
+      font-size:.95rem;
+    }
+
+    .small{
+      font-size:.88rem;
+      color:var(--muted);
+    }
+
+    .success, .warning{
+      display:none;
+      margin-top:14px;
+      padding:14px;
+      border-radius:12px;
+    }
+
+    .success{
+      background:rgba(132,169,140,.14);
+      border:1px solid rgba(132,169,140,.35);
+    }
+
+    .warning{
+      background:rgba(212,163,115,.12);
+      border:1px solid rgba(212,163,115,.35);
+    }
+
+    .footer{
+      padding:26px 0 40px;
+      color:var(--muted);
+      font-size:.92rem;
+    }
+
+    .divider{
+      height:1px;
+      background:linear-gradient(90deg,transparent,var(--line),transparent);
+      margin:10px 0 0;
+    }
+
+    @media (max-width: 900px){
+      .hero,.grid-3,.grid-2{grid-template-columns:1fr}
+      .hero-copy,.hero-side{padding:24px}
+    }
+  </style>
+</head>
+<body>
+
+  <header class="container">
+    <nav class="nav">
+      <div class="brand">CetrerIA</div>
+      <div class="nav-links">
+        <a href="#proyecto">Proyecto</a>
+        <a href="#incluye">Incluye</a>
+        <a href="#multimedia">Multimedia</a>
+        <a href="#orientador">Orientador</a>
+        <a href="#guia">Guía</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-card hero-copy">
+        <span class="eyebrow">Divulgación y orientación básica</span>
+        <h1>Entiende la cetrería con una base clara, responsable y digital</h1>
+        <p class="lead">
+          CetrerIA es un proyecto de divulgación, orientación y formación básica sobre cetrería,
+          creado para ofrecer una primera aproximación seria y bien estructurada.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#guia">Quiero recibir la guía</a>
+          <a class="btn btn-secondary" id="gammaBtn" href="#" target="_blank" rel="noopener">Ver el proyecto</a>
+        </div>
+      </div>
+
+      <div class="hero-card hero-side">
+        <h3>Qué encontrarás aquí</h3>
+        <ul class="mini-list">
+          <li>Guía PDF introductoria.</li>
+          <li>Presentación visual del proyecto.</li>
+          <li>Vídeo promocional y vídeo explicativo.</li>
+          <li>Chatbot orientador.</li>
+          <li>Entrega real del recurso por email.</li>
+        </ul>
+        <p class="small">
+          CetrerIA es un MVP divulgativo y formativo básico. No sustituye formación profesional,
+          asesoramiento legal específico ni práctica supervisada.
+        </p>
+      </div>
+    </section>
+
+    <section id="proyecto">
+      <h2 class="section-title">Qué es CetrerIA</h2>
+      <p class="section-text">
+        CetrerIA es un producto digital mínimo viable pensado para mostrar cómo puede construirse
+        una experiencia real con inteligencia artificial a partir de un solo proyecto coherente.
+      </p>
+      <div class="grid-3">
+        <article class="card">
+          <h3>Claro</h3>
+          <p class="muted">Explica conceptos esenciales sin tecnicismo innecesario ni sensacionalismo.</p>
+        </article>
+        <article class="card">
+          <h3>Práctico</h3>
+          <p class="muted">Reúne guía, presentación, web, orientación y automatización básica.</p>
+        </article>
+        <article class="card">
+          <h3>Responsable</h3>
+          <p class="muted">Mantiene límites claros y refuerza bienestar animal, prudencia y criterio.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="incluye">
+      <h2 class="section-title">Qué incluye el proyecto</h2>
+      <div class="grid-2">
+        <article class="card">
+          <h3>Guía introductoria</h3>
+          <p class="muted">Un recurso de entrada para comprender bases, errores frecuentes y referencias iniciales.</p>
+        </article>
+        <article class="card">
+          <h3>Presentación visual</h3>
+          <p class="muted">Una explicación estructurada del proyecto y su enfoque divulgativo.</p>
+        </article>
+        <article class="card">
+          <h3>Vídeos y audio</h3>
+          <p class="muted">Piezas breves para explicar, presentar e identificar visualmente el proyecto.</p>
+        </article>
+        <article class="card">
+          <h3>Orientador digital</h3>
+          <p class="muted">Un flujo conversacional sencillo para ayudar al visitante a elegir el siguiente paso.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="multimedia">
+      <h2 class="section-title">Presentación y recursos multimedia</h2>
+      <p class="section-text">Más adelante sustituiremos los enlaces de ejemplo por las URLs reales.</p>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Vídeo promocional</h3>
+          <iframe class="media-frame" id="promoFrame" title="Vídeo promocional"></iframe>
+        </div>
+        <div class="card">
+          <h3>Vídeo explicativo</h3>
+          <iframe class="media-frame" id="avatarFrame" title="Vídeo explicativo"></iframe>
+        </div>
+      </div>
+      <div class="card audio-wrap" style="margin-top:18px;">
+        <h3>Sintonía de CetrerIA</h3>
+        <audio id="audioPlayer" controls></audio>
+        <p class="small">Aquí conectaremos más adelante el archivo de audio final.</p>
+      </div>
+    </section>
+
+    <section id="orientador">
+      <h2 class="section-title">Chatbot orientador</h2>
+      <p class="section-text">
+        Aquí integraremos el chatbot de CetrerIA para orientar al visitante dentro del proyecto.
+      </p>
+      <div class="card">
+        <iframe class="chat-frame" id="landbotFrame" title="Chatbot orientador"></iframe>
+      </div>
+    </section>
+
+    <section id="guia">
+      <h2 class="section-title">Recibe la guía introductoria</h2>
+      <p class="section-text">
+        Déjanos tus datos y te enviaremos la guía introductoria de CetrerIA para empezar a comprender la cetrería con una base más clara, ordenada y responsable.
+      </p>
+
+      <div class="grid-2">
+        <div class="card">
+          <form id="leadForm" method="POST" target="hidden_iframe" action="">
+            <div>
+              <label for="nombre">Nombre</label>
+              <input id="nombre" type="text" required />
+            </div>
+
+            <div>
+              <label for="email">Correo electrónico</label>
+              <input id="email" type="email" required />
+            </div>
+
+            <div>
+              <label for="perfil">Perfil o interés inicial</label>
+              <select id="perfil" required>
+                <option value="">Selecciona una opción</option>
+                <option>Tengo curiosidad y empiezo desde cero</option>
+                <option>Quiero una primera base más clara</option>
+                <option>Ya conozco algo y quiero ordenar ideas</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="consentimiento">Aceptación del envío del recurso</label>
+              <select id="consentimiento" required>
+                <option value="">Selecciona una opción</option>
+                <option>Sí, quiero recibir la guía introductoria de CetrerIA</option>
+              </select>
+            </div>
+
+            <button class="btn btn-primary" type="submit">Enviar y recibir guía</button>
+          </form>
+
+          <div id="successBox" class="success">
+            Gracias. Hemos registrado tu solicitud. Recibirás la guía de CetrerIA en tu correo en los próximos minutos.
+          </div>
+
+          <div id="warningBox" class="warning">
+            Todavía faltan enlaces y campos por conectar antes de que la web quede completamente operativa.
+          </div>
+
+          <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+        </div>
+
+        <div class="card">
+          <h3>Qué obtendrás</h3>
+          <p class="muted">
+            Una primera base ordenada para empezar a comprender la cetrería con más claridad,
+            menos ruido y un enfoque responsable.
+          </p>
+
+          <p>
+            <a class="btn btn-secondary" id="guideBtn" href="#" target="_blank" rel="noopener">Abrir guía PDF</a>
+          </p>
+
+          <h3 style="margin-top:26px;">Importante</h3>
+          <p class="small">
+            CetrerIA es un producto digital mínimo viable. No sustituye formación especializada,
+            práctica supervisada ni asesoramiento técnico o jurídico específico.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <h2 class="section-title">Preguntas frecuentes</h2>
+      <div class="grid-2">
+        <article class="card">
+          <h3>¿CetrerIA es un curso profesional completo?</h3>
+          <p class="muted">No. Es un proyecto introductorio de divulgación, orientación y formación básica.</p>
+        </article>
+        <article class="card">
+          <h3>¿La guía me capacita profesionalmente?</h3>
+          <p class="muted">No. La guía ofrece una primera base ordenada, no una formación completa.</p>
+        </article>
+        <article class="card">
+          <h3>¿Qué puedo hacer dentro del proyecto?</h3>
+          <p class="muted">Consultar la propuesta, ver recursos, orientarte con el chatbot y solicitar la guía introductoria.</p>
+        </article>
+        <article class="card">
+          <h3>¿Esto funciona de verdad?</h3>
+          <p class="muted">Sí. Está planteado como un MVP funcional: lo que se presenta debe poder verse, probarse y utilizarse en su nivel.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="limites">
+      <h2 class="section-title">Límites y advertencias</h2>
+      <p class="section-text">
+        CetrerIA no sustituye formación especializada, práctica supervisada ni asesoramiento técnico o jurídico específico.
+        Su función es servir como punto de partida claro, responsable y bien estructurado.
+      </p>
+    </section>
+
+    <section id="cierre">
+      <div class="card">
+        <h2 class="section-title">Empieza con una base más clara</h2>
+        <p class="section-text">
+          CetrerIA demuestra que es posible construir una experiencia digital mínima, útil y coherente
+          conectando varias herramientas de inteligencia artificial dentro de un solo proyecto.
+        </p>
+        <a class="btn btn-primary" href="#guia">Quiero recibir la guía</a>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <footer class="footer">
+      <p>© CetrerIA · Proyecto divulgativo y formativo básico.</p>
+    </footer>
+  </main>
+
+  <script>
+    const CONFIG = {
+      guideUrl: "PON_AQUI_EL_ENLACE_PUBLICO_DE_LA_GUIA_PDF",
+      gammaUrl: "PON_AQUI_EL_ENLACE_DE_GAMMA",
+      promoEmbedUrl: "PON_AQUI_EL_ENLACE_EMBEBIBLE_DEL_VIDEO_PROMO",
+      avatarEmbedUrl: "PON_AQUI_EL_ENLACE_EMBEBIBLE_DEL_VIDEO_AVATAR",
+      audioUrl: "PON_AQUI_EL_ENLACE_PUBLICO_DEL_MP3",
+      landbotEmbedUrl: "PON_AQUI_EL_ENLACE_EMBEBIBLE_DE_LANDBOT",
+      formAction: "PON_AQUI_LA_URL_formResponse_DE_GOOGLE_FORMS",
+      fieldName: "entry.1111111111",
+      fieldEmail: "entry.2222222222",
+      fieldProfile: "entry.3333333333",
+      fieldConsent: "entry.4444444444"
+    };
+
+    const guideBtn = document.getElementById("guideBtn");
+    const gammaBtn = document.getElementById("gammaBtn");
+    const promoFrame = document.getElementById("promoFrame");
+    const avatarFrame = document.getElementById("avatarFrame");
+    const landbotFrame = document.getElementById("landbotFrame");
+    const audioPlayer = document.getElementById("audioPlayer");
+    const leadForm = document.getElementById("leadForm");
+    const successBox = document.getElementById("successBox");
+    const warningBox = document.getElementById("warningBox");
+
+    guideBtn.href = CONFIG.guideUrl;
+    gammaBtn.href = CONFIG.gammaUrl;
+    promoFrame.src = CONFIG.promoEmbedUrl;
+    avatarFrame.src = CONFIG.avatarEmbedUrl;
+    landbotFrame.src = CONFIG.landbotEmbedUrl;
+    audioPlayer.src = CONFIG.audioUrl;
+    leadForm.action = CONFIG.formAction;
+
+    document.getElementById("nombre").setAttribute("name", CONFIG.fieldName);
+    document.getElementById("email").setAttribute("name", CONFIG.fieldEmail);
+    document.getElementById("perfil").setAttribute("name", CONFIG.fieldProfile);
+    document.getElementById("consentimiento").setAttribute("name", CONFIG.fieldConsent);
+
+    let submitted = false;
+
+    leadForm.addEventListener("submit", function (event) {
+      const values = Object.values(CONFIG);
+      const hasPlaceholder = values.some(v => String(v).includes("PON_AQUI"));
+      if (hasPlaceholder) {
+        event.preventDefault();
+        warningBox.style.display = "block";
+        successBox.style.display = "none";
+        return;
+      }
+      submitted = true;
+      warningBox.style.display = "none";
+    });
+
+    document.getElementById("hidden_iframe").addEventListener("load", function () {
+      if (!submitted) return;
+      successBox.style.display = "block";
+      leadForm.reset();
+      submitted = false;
+    });
+  </script>
+</body>
+</html>
