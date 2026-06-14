@@ -113,7 +113,7 @@
       padding:6px 12px;
       border-radius:999px;
       font-size:.82rem;
-      margin-bottom:16px
+      margin-bottom:16px;
     }
 
     h1{
@@ -178,46 +178,24 @@
       width:100%;
     }
 
-    form{
-      display:grid;
-      gap:12px;
-    }
-
-    input, select{
-      width:100%;
-      padding:14px 14px;
-      border-radius:12px;
-      border:1px solid var(--line);
-      background:#0b1220;
-      color:var(--text);
-      font-size:1rem;
-    }
-
-    label{
-      font-weight:700;
-      font-size:.95rem;
-    }
-
     .small{
       font-size:.88rem;
       color:var(--muted);
     }
 
-    .success, .warning{
-      display:none;
-      margin-top:14px;
-      padding:14px;
-      border-radius:12px;
+    .embed-wrap{
+      background:#ffffff;
+      border-radius:14px;
+      overflow:hidden;
+      min-height:1100px;
     }
 
-    .success{
-      background:rgba(132,169,140,.14);
-      border:1px solid rgba(132,169,140,.35);
-    }
-
-    .warning{
-      background:rgba(212,163,115,.12);
-      border:1px solid rgba(212,163,115,.35);
+    .embed-wrap iframe{
+      width:100%;
+      height:1100px;
+      border:0;
+      display:block;
+      background:#ffffff;
     }
 
     .footer{
@@ -235,6 +213,7 @@
     @media (max-width: 900px){
       .hero,.grid-3,.grid-2{grid-template-columns:1fr}
       .hero-copy,.hero-side{padding:24px}
+      .embed-wrap iframe{height:1200px;}
     }
   </style>
 </head>
@@ -264,7 +243,7 @@
         </p>
         <div class="cta-row">
           <a class="btn btn-primary" href="#guia">Quiero recibir la guía</a>
-          <a class="btn btn-secondary" id="gammaBtn" href="#" target="_blank" rel="noopener">Ver el proyecto</a>
+          <a class="btn btn-secondary" href="#proyecto">Ver el proyecto</a>
         </div>
       </div>
 
@@ -330,20 +309,20 @@
 
     <section id="multimedia">
       <h2 class="section-title">Presentación y recursos multimedia</h2>
-      <p class="section-text">Más adelante sustituiremos los enlaces de ejemplo por las URLs reales.</p>
+      <p class="section-text">Más adelante sustituiremos los enlaces y recursos de ejemplo por los definitivos.</p>
       <div class="grid-2">
         <div class="card">
           <h3>Vídeo promocional</h3>
-          <iframe class="media-frame" id="promoFrame" title="Vídeo promocional"></iframe>
+          <iframe class="media-frame" title="Vídeo promocional"></iframe>
         </div>
         <div class="card">
           <h3>Vídeo explicativo</h3>
-          <iframe class="media-frame" id="avatarFrame" title="Vídeo explicativo"></iframe>
+          <iframe class="media-frame" title="Vídeo explicativo"></iframe>
         </div>
       </div>
       <div class="card audio-wrap" style="margin-top:18px;">
         <h3>Sintonía de CetrerIA</h3>
-        <audio id="audioPlayer" controls></audio>
+        <audio controls></audio>
         <p class="small">Aquí conectaremos más adelante el archivo de audio final.</p>
       </div>
     </section>
@@ -354,7 +333,7 @@
         Aquí integraremos el chatbot de CetrerIA para orientar al visitante dentro del proyecto.
       </p>
       <div class="card">
-        <iframe class="chat-frame" id="landbotFrame" title="Chatbot orientador"></iframe>
+        <iframe class="chat-frame" title="Chatbot orientador"></iframe>
       </div>
     </section>
 
@@ -366,47 +345,14 @@
 
       <div class="grid-2">
         <div class="card">
-          <form id="leadForm" method="POST" target="hidden_iframe" action="">
-            <div>
-              <label for="nombre">Nombre</label>
-              <input id="nombre" type="text" required />
-            </div>
-
-            <div>
-              <label for="email">Correo electrónico</label>
-              <input id="email" type="email" required />
-            </div>
-
-            <div>
-              <label for="perfil">Perfil o interés inicial</label>
-              <select id="perfil" required>
-                <option value="">Selecciona una opción</option>
-                <option>Tengo curiosidad y empiezo desde cero</option>
-                <option>Quiero una primera base más clara</option>
-                <option>Ya conozco algo y quiero ordenar ideas.</option>
-              </select>
-            </div>
-
-            <div>
-              <label for="consentimiento">Aceptación del envío del recurso</label>
-              <select id="consentimiento" required>
-                <option value="">Selecciona una opción</option>
-                <option>Si, quiero recibir la guía, introductoria de CetrerIA.</option>
-              </select>
-            </div>
-
-            <button class="btn btn-primary" type="submit">Enviar y recibir guía</button>
-          </form>
-
-          <div id="successBox" class="success">
-            Gracias. Hemos registrado tu solicitud. Recibirás la guía de CetrerIA en tu correo en los próximos minutos.
+          <div class="embed-wrap">
+            <iframe
+              src="https://docs.google.com/forms/d/e/1FAIpQLScj7sOPkOLw15jnAb8vEUUJmH9xg4qIPPtmreEoPsUZ7RMotw/viewform?embedded=true"
+              title="Formulario CetrerIA"
+            >
+              Cargando…
+            </iframe>
           </div>
-
-          <div id="warningBox" class="warning">
-            Todavía faltan enlaces y campos por conectar antes de que la web quede completamente operativa.
-          </div>
-
-          <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
         </div>
 
         <div class="card">
@@ -417,7 +363,7 @@
           </p>
 
           <p>
-            <a class="btn btn-secondary" id="guideBtn" href="#" target="_blank" rel="noopener">Abrir guía PDF</a>
+            <a class="btn btn-secondary" href="#">Abrir guía PDF</a>
           </p>
 
           <h3 style="margin-top:26px;">Importante</h3>
@@ -476,75 +422,5 @@
       <p>© CetrerIA · Proyecto divulgativo y formativo básico.</p>
     </footer>
   </main>
-
-  <script>
-    const CONFIG = {
-      guideUrl: "PON_AQUI_EL_ENLACE_PUBLICO_DE_LA_GUIA_PDF",
-      gammaUrl: "PON_AQUI_EL_ENLACE_DE_GAMMA",
-      promoEmbedUrl: "PON_AQUI_EL_ENLACE_EMBEBIBLE_DEL_VIDEO_PROMO",
-      avatarEmbedUrl: "PON_AQUI_EL_ENLACE_EMBEBIBLE_DEL_VIDEO_AVATAR",
-      audioUrl: "PON_AQUI_EL_ENLACE_PUBLICO_DEL_MP3",
-      landbotEmbedUrl: "PON_AQUI_EL_ENLACE_EMBEBIBLE_DE_LANDBOT",
-      formAction: "https://docs.google.com/forms/d/e/1FAIpQLScj7sOPkOLw15jnAb8vEUUJmH9xg4qIPPtmreEoPsUZ7RMotw/formResponse",
-      fieldName: "entry.1850819948",
-      fieldEmail: "entry.1488701405",
-      fieldProfile: "entry.1803242476",
-      fieldConsent: "entry.1965547908"
-    };
-
-    const guideBtn = document.getElementById("guideBtn");
-    const gammaBtn = document.getElementById("gammaBtn");
-    const promoFrame = document.getElementById("promoFrame");
-    const avatarFrame = document.getElementById("avatarFrame");
-    const landbotFrame = document.getElementById("landbotFrame");
-    const audioPlayer = document.getElementById("audioPlayer");
-    const leadForm = document.getElementById("leadForm");
-    const successBox = document.getElementById("successBox");
-    const warningBox = document.getElementById("warningBox");
-
-    guideBtn.href = CONFIG.guideUrl;
-    gammaBtn.href = CONFIG.gammaUrl;
-    promoFrame.src = CONFIG.promoEmbedUrl;
-    avatarFrame.src = CONFIG.avatarEmbedUrl;
-    landbotFrame.src = CONFIG.landbotEmbedUrl;
-    audioPlayer.src = CONFIG.audioUrl;
-    leadForm.action = CONFIG.formAction;
-
-    document.getElementById("nombre").setAttribute("name", CONFIG.fieldName);
-    document.getElementById("email").setAttribute("name", CONFIG.fieldEmail);
-    document.getElementById("perfil").setAttribute("name", CONFIG.fieldProfile);
-    document.getElementById("consentimiento").setAttribute("name", CONFIG.fieldConsent);
-
-    let submitted = false;
-
-    leadForm.addEventListener("submit", function (event) {
-      const requiredFormConfig = [
-        CONFIG.formAction,
-        CONFIG.fieldName,
-        CONFIG.fieldEmail,
-        CONFIG.fieldProfile,
-        CONFIG.fieldConsent
-      ];
-
-      const hasPlaceholder = requiredFormConfig.some(v => String(v).includes("PON_AQUI"));
-
-      if (hasPlaceholder) {
-        event.preventDefault();
-        warningBox.style.display = "block";
-        successBox.style.display = "none";
-        return;
-      }
-
-      submitted = true;
-      warningBox.style.display = "none";
-    });
-
-    document.getElementById("hidden_iframe").addEventListener("load", function () {
-      if (!submitted) return;
-      successBox.style.display = "block";
-      leadForm.reset();
-      submitted = false;
-    });
-  </script>
 </body>
 </html>
