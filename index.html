@@ -383,7 +383,7 @@
                 <option value="">Selecciona una opción</option>
                 <option>Tengo curiosidad y empiezo desde cero</option>
                 <option>Quiero una primera base más clara</option>
-                <option>Ya conozco algo y quiero ordenar ideas</option>
+                <option>Ya conozco algo y quiero ordenar ideas.</option>
               </select>
             </div>
 
@@ -391,7 +391,7 @@
               <label for="consentimiento">Aceptación del envío del recurso</label>
               <select id="consentimiento" required>
                 <option value="">Selecciona una opción</option>
-                <option>Sí, quiero recibir la guía introductoria de CetrerIA</option>
+                <option>Si, quiero recibir la guía, introductoria de CetrerIA.</option>
               </select>
             </div>
 
@@ -519,21 +519,22 @@
 
     leadForm.addEventListener("submit", function (event) {
       const requiredFormConfig = [
-  CONFIG.formAction,
-  CONFIG.fieldName,
-  CONFIG.fieldEmail,
-  CONFIG.fieldProfile,
-  CONFIG.fieldConsent
-];
+        CONFIG.formAction,
+        CONFIG.fieldName,
+        CONFIG.fieldEmail,
+        CONFIG.fieldProfile,
+        CONFIG.fieldConsent
+      ];
 
-const hasPlaceholder = requiredFormConfig.some(v => String(v).includes("PON_AQUI"));
+      const hasPlaceholder = requiredFormConfig.some(v => String(v).includes("PON_AQUI"));
 
-if (hasPlaceholder) {
-  event.preventDefault();
-  warningBox.style.display = "block";
-  successBox.style.display = "none";
-  return;
+      if (hasPlaceholder) {
+        event.preventDefault();
+        warningBox.style.display = "block";
+        successBox.style.display = "none";
+        return;
       }
+
       submitted = true;
       warningBox.style.display = "none";
     });
