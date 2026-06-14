@@ -518,13 +518,21 @@
     let submitted = false;
 
     leadForm.addEventListener("submit", function (event) {
-      const values = Object.values(CONFIG);
-      const hasPlaceholder = values.some(v => String(v).includes("PON_AQUI"));
-      if (hasPlaceholder) {
-        event.preventDefault();
-        warningBox.style.display = "block";
-        successBox.style.display = "none";
-        return;
+      const requiredFormConfig = [
+  CONFIG.formAction,
+  CONFIG.fieldName,
+  CONFIG.fieldEmail,
+  CONFIG.fieldProfile,
+  CONFIG.fieldConsent
+];
+
+const hasPlaceholder = requiredFormConfig.some(v => String(v).includes("PON_AQUI"));
+
+if (hasPlaceholder) {
+  event.preventDefault();
+  warningBox.style.display = "block";
+  successBox.style.display = "none";
+  return;
       }
       submitted = true;
       warningBox.style.display = "none";
