@@ -174,8 +174,13 @@
       min-height:320px;
     }
 
-    .audio-wrap audio{
+    .video-frame{
       width:100%;
+      border:0;
+      border-radius:14px;
+      background:#0b1220;
+      min-height:320px;
+      display:block;
     }
 
     .small{
@@ -198,6 +203,40 @@
       background:#ffffff;
     }
 
+    .avatar-wrap{
+      position:relative;
+      overflow:hidden;
+      aspect-ratio:1920/1080;
+      border-radius:14px;
+      background:#0b1220;
+    }
+
+    .avatar-wrap iframe{
+      position:absolute;
+      width:100%;
+      height:100%;
+      top:0;
+      left:0;
+      border:none;
+      padding:0;
+      margin:0;
+      overflow:hidden;
+      border-radius:14px;
+    }
+
+    .landbot-wrap{
+      width:100%;
+      height:600px;
+      border-radius:14px;
+      overflow:hidden;
+      background:#0b1220;
+    }
+
+    .audio-wrap audio{
+      width:100%;
+      margin-top:10px;
+    }
+
     .footer{
       padding:26px 0 40px;
       color:var(--muted);
@@ -214,6 +253,7 @@
       .hero,.grid-3,.grid-2{grid-template-columns:1fr}
       .hero-copy,.hero-side{padding:24px}
       .embed-wrap iframe{height:1200px;}
+      .landbot-wrap{height:620px;}
     }
   </style>
 </head>
@@ -239,11 +279,11 @@
         <h1>Entiende la cetrería con una base clara, responsable y digital</h1>
         <p class="lead">
           CetrerIA es un proyecto de divulgación, orientación y formación básica sobre cetrería,
-          creado para ofrecer una primera aproximación seria y bien estructurada.
+          creado para ofrecer una primera aproximación seria, útil y bien estructurada.
         </p>
         <div class="cta-row">
           <a class="btn btn-primary" href="#guia">Quiero recibir la guía</a>
-          <a class="btn btn-secondary" href="#proyecto">Ver el proyecto</a>
+          <a class="btn btn-secondary" href="https://gamma.app/docs/CetrerIA-10dlrmf771v0u3j" target="_blank" rel="noopener">Ver presentación</a>
         </div>
       </div>
 
@@ -252,7 +292,7 @@
         <ul class="mini-list">
           <li>Guía PDF introductoria.</li>
           <li>Presentación visual del proyecto.</li>
-          <li>Vídeo promocional y vídeo explicativo.</li>
+          <li>Vídeo promocional y avatar explicativo.</li>
           <li>Chatbot orientador.</li>
           <li>Entrega real del recurso por email.</li>
         </ul>
@@ -309,38 +349,58 @@
 
     <section id="multimedia">
       <h2 class="section-title">Presentación y recursos multimedia</h2>
-      <p class="section-text">Más adelante sustituiremos los enlaces y recursos de ejemplo por los definitivos.</p>
+      <p class="section-text">Aquí ya están conectados los activos principales del MVP.</p>
+
       <div class="grid-2">
         <div class="card">
           <h3>Vídeo promocional</h3>
-          <iframe class="media-frame" title="Vídeo promocional"></iframe>
+          <video class="video-frame" controls playsinline preload="metadata">
+            <source src="https://cesarcubilledo.github.io/CetrerIA/02_Video_Promo_CetrerIA.mp4" type="video/mp4">
+            Tu navegador no soporta vídeo HTML5.
+          </video>
         </div>
+
         <div class="card">
           <h3>Vídeo explicativo</h3>
-          <iframe class="media-frame" title="Vídeo explicativo"></iframe>
+          <div class="avatar-wrap">
+            <iframe
+              src="https://share.synthesia.io/embeds/videos/a78d29c1-b99e-466d-9cce-0094bd816c37"
+              loading="lazy"
+              title="Avatar explicativo de CetrerIA"
+              allowfullscreen
+              allow="encrypted-media; fullscreen; microphone; screen-wake-lock;">
+            </iframe>
+          </div>
         </div>
       </div>
+
       <div class="card audio-wrap" style="margin-top:18px;">
         <h3>Sintonía de CetrerIA</h3>
-        <audio controls></audio>
-        <p class="small">Aquí conectaremos más adelante el archivo de audio final.</p>
+        <p class="small">Puedes escuchar aquí la sintonía original del proyecto.</p>
+        <audio controls preload="metadata">
+          <source src="https://cesarcubilledo.github.io/CetrerIA/01_Sintonia_CetrerIA.mp3" type="audio/mpeg">
+          Tu navegador no soporta el elemento de audio.
+        </audio>
+        <p style="margin-top:14px;">
+          <a class="btn btn-secondary" href="https://suno.com/s/fgaASWRg4hQIips7" target="_blank" rel="noopener">Ver en Suno</a>
+        </p>
       </div>
     </section>
 
     <section id="orientador">
       <h2 class="section-title">Chatbot orientador</h2>
       <p class="section-text">
-        Aquí integraremos el chatbot de CetrerIA para orientar al visitante dentro del proyecto.
+        Aquí puedes orientarte dentro del proyecto y elegir el siguiente paso más útil.
       </p>
       <div class="card">
-        <iframe class="chat-frame" title="Chatbot orientador"></iframe>
+        <div id="myLandbot" class="landbot-wrap"></div>
       </div>
     </section>
 
     <section id="guia">
       <h2 class="section-title">Recibe la guía introductoria</h2>
       <p class="section-text">
-        Déjanos tus datos y te enviaremos la guía introductoria de CetrerIA para empezar a comprender la cetrería con una base más clara, ordenada y responsable.
+        Déjanos tus datos y recibirás la guía introductoria de CetrerIA para empezar a comprender la cetrería con una base más clara, ordenada y responsable.
       </p>
 
       <div class="grid-2">
@@ -348,8 +408,7 @@
           <div class="embed-wrap">
             <iframe
               src="https://docs.google.com/forms/d/e/1FAIpQLScj7sOPkOLw15jnAb8vEUUJmH9xg4qIPPtmreEoPsUZ7RMotw/viewform?embedded=true"
-              title="Formulario CetrerIA"
-            >
+              title="Formulario CetrerIA">
               Cargando…
             </iframe>
           </div>
@@ -363,7 +422,11 @@
           </p>
 
           <p>
-            <a class="btn btn-secondary" href="#">Abrir guía PDF</a>
+            <a class="btn btn-secondary" href="https://cesarcubilledo.github.io/CetrerIA/02_Guia_Final_CetrerIA.pdf" target="_blank" rel="noopener">Abrir guía PDF</a>
+          </p>
+
+          <p>
+            <a class="btn btn-secondary" href="https://gamma.app/docs/CetrerIA-10dlrmf771v0u3j" target="_blank" rel="noopener">Abrir presentación</a>
           </p>
 
           <h3 style="margin-top:26px;">Importante</h3>
@@ -392,7 +455,7 @@
         </article>
         <article class="card">
           <h3>¿Esto funciona de verdad?</h3>
-          <p class="muted">Sí. Está planteado como un MVP funcional: lo que se presenta debe poder verse, probarse y utilizarse en su nivel.</p>
+          <p class="muted">Sí. Está planteado como un MVP funcional: lo que se presenta puede verse, probarse y utilizarse en su nivel.</p>
         </article>
       </div>
     </section>
@@ -422,5 +485,13 @@
       <p>© CetrerIA · Proyecto divulgativo y formativo básico.</p>
     </footer>
   </main>
+
+  <script type="module" src="https://cdn.landbot.io/landbot-3/landbot-3.0.0.mjs"></script>
+  <script type="module">
+    var myLandbot = new Landbot.Container({
+      container: '#myLandbot',
+      configUrl: 'https://storage.googleapis.com/landbot.online/v3/H-3460979-OEVLQH4YHX4EW3BB/index.json',
+    });
+  </script>
 </body>
 </html>
